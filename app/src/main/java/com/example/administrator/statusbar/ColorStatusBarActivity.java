@@ -13,11 +13,12 @@ import com.example.administrator.statusbar.utils.StatusBarUtil;
 import java.util.Random;
 
 public class ColorStatusBarActivity extends BaseActivity {
+    /*声明控件*/
     private Toolbar mToolbar;
     private Button mBtnChangeColor;
     private SeekBar mSbChangeAlpha;
     private TextView mTvStatusAlpha;
-
+    /*声明颜色、透明度*/
     private int mColor;
     private int mAlpha;
 
@@ -25,19 +26,17 @@ public class ColorStatusBarActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_status_bar);
-
+        // 初始化控件
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mBtnChangeColor = (Button) findViewById(R.id.btn_change_color);
         mTvStatusAlpha = (TextView) findViewById(R.id.tv_status_alpha);
         mSbChangeAlpha = (SeekBar) findViewById(R.id.sb_change_alpha);
-
         // 设置ToolBar
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
-        // 改变颜色
+        // 随机改变颜色
         mBtnChangeColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,8 +46,9 @@ public class ColorStatusBarActivity extends BaseActivity {
                 StatusBarUtil.setColor(ColorStatusBarActivity.this, mColor, mAlpha);
             }
         });
-
+        // 设置SeekBar最大值
         mSbChangeAlpha.setMax(255);
+        // 给SeekBar添加监听事件
         mSbChangeAlpha.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

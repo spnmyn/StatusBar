@@ -89,12 +89,12 @@
                 android:text="Use In Fragment" />
 
             <Button
-                android:id="@+id/btn_set_color_for_swipe_back_page"
+                android:id="@+id/btn_set_color_for_slideBack_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="4dp"
-                android:text="Set Color For Swipe Back Page " />
+                android:text="Set Color For SlideBack Page " />
 
         </LinearLayout>
     </FrameLayout>
@@ -105,7 +105,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/white"
-        app:headerLayout="@layout/nav_header"
+        app:headerLayout="@layout/navigation_header"
         app:menu="@menu/activity_main_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

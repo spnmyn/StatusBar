@@ -21,16 +21,20 @@ import java.util.Random;
  */
 
 public class UseInFragmentActivity extends BaseActivity {
+    /*声明控件*/
     private ViewPager mVpHome;
     private BottomNavigationBar mBottomNavigationBar;
+    /*声明碎片数据集合*/
     private ArrayList<Fragment> mFragmentList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_use_in_fragment);
+        // 初始化控件
         mVpHome = (ViewPager) findViewById(R.id.vp_home);
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        // 给底部标题栏添加资源
         mBottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.ic_favorite, "One"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_gavel, "Two"))
                 .addItem(new BottomNavigationItem(R.drawable.ic_grade, "Three"))
@@ -52,12 +56,12 @@ public class UseInFragmentActivity extends BaseActivity {
 
             }
         });
-
+        // 给碎片数据集合添加数据
         mFragmentList.add(new ImageFragment());
         mFragmentList.add(new SimpleFragment());
         mFragmentList.add(new SimpleFragment());
         mFragmentList.add(new SimpleFragment());
-
+        // 给ViewPager设置滑动监听事件
         mVpHome.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -74,7 +78,7 @@ public class UseInFragmentActivity extends BaseActivity {
                         Random random = new Random();
                         int color = 0xff000000 | random.nextInt(0xffffff);
                         if (mFragmentList.get(position) instanceof SimpleFragment) {
-                            ((SimpleFragment) mFragmentList.get(position)).setTvTitleBackgroundColor(color);
+                            ((SimpleFragment) mFragmentList.get(position)).setTitleBackgroundColor(color);
                         }
                         break;
                 }
@@ -85,6 +89,7 @@ public class UseInFragmentActivity extends BaseActivity {
 
             }
         });
+        // 给ViewPager设置适配器
         mVpHome.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {

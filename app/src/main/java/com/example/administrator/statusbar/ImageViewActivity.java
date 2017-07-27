@@ -17,11 +17,12 @@ import com.r0adkll.slidr.Slidr;
  */
 
 public class ImageViewActivity extends BaseActivity {
+    /*声明控件*/
     private Toolbar mToolbar;
     private View mViewNeedOffset;
     private SeekBar mSbChangeAlpha;
     private TextView mTvStatusAlpha;
-
+    /*声明透明度*/
     private int mAlpha;
 
     @Override
@@ -30,6 +31,7 @@ public class ImageViewActivity extends BaseActivity {
         setContentView(R.layout.activity_image_view);
         // 设置右滑动返回
         Slidr.attach(this);
+        // 初始化控件
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mViewNeedOffset = findViewById(R.id.view_need_offset);
         mTvStatusAlpha = (TextView) findViewById(R.id.tv_status_alpha);
@@ -39,8 +41,9 @@ public class ImageViewActivity extends BaseActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
+        // 设置SeekBar最大值
         mSbChangeAlpha.setMax(255);
+        // 给SeekBar添加监听事件
         mSbChangeAlpha.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

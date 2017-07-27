@@ -15,27 +15,28 @@ import com.example.administrator.statusbar.utils.StatusBarUtil;
  */
 
 public class ImageStatusBarActivity extends BaseActivity {
-    public static final String EXTRA_IS_TRANSPARENT = "is_transparent";
+    /*声明控件*/
     private TextView mTvStatusAlpha;
     private RelativeLayout mRootLayout;
     private Button mBtnChangeBackground;
     private boolean isBgChanged;
     private SeekBar mSbChangeAlpha;
 
-    private boolean isTransparent;
     private int mAlpha;
+    private boolean isTransparent;
+    public static final String EXTRA_IS_TRANSPARENT = "is_transparent";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         isTransparent = getIntent().getBooleanExtra(EXTRA_IS_TRANSPARENT, false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_status_bar);
-
+        // 初始化控件
         mRootLayout = (RelativeLayout) findViewById(R.id.root_layout);
         mBtnChangeBackground = (Button) findViewById(R.id.btn_change_background);
         mTvStatusAlpha = (TextView) findViewById(R.id.tv_status_alpha);
         mSbChangeAlpha = (SeekBar) findViewById(R.id.sb_change_alpha);
-
+        // 改变窗体背景图片
         mBtnChangeBackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +48,7 @@ public class ImageStatusBarActivity extends BaseActivity {
                 }
             }
         });
-
+        // 设置SeekBar是否可见
         if (!isTransparent) {
             mSbChangeAlpha.setVisibility(View.VISIBLE);
             setSeekBar();

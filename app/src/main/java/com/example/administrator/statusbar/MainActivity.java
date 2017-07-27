@@ -13,6 +13,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class MainActivity extends BaseActivity {
+    /*声明控件*/
     private DrawerLayout mDrawerLayout;
     private Toolbar mToolbar;
     private CheckBox chb_change_background_picture;
@@ -21,12 +22,11 @@ public class MainActivity extends BaseActivity {
     private Button btn_set_alpha;
     private Button btn_set_alpha_for_image_view;
     private Button btn_use_in_fragment;
-    private Button btn_set_color_for_swipe_back_page;
-
+    private Button btn_set_color_for_slideBack_page;
     private ViewGroup contentLayout;
     private SeekBar mSbChangeAlpha;
     private TextView mTvStatusAlpha;
-
+    /*声明颜色、透明度变量*/
     private int mStatusBarColor;
     private int mAlpha = com.jaeger.library.StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA;
 
@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        // 初始化控件
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         contentLayout = (ViewGroup) findViewById(R.id.main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -44,11 +44,11 @@ public class MainActivity extends BaseActivity {
         btn_set_alpha = (Button) findViewById(R.id.btn_set_alpha);
         btn_set_alpha_for_image_view = (Button) findViewById(R.id.btn_set_alpha_for_image_view);
         btn_use_in_fragment = (Button) findViewById(R.id.btn_use_in_fragment);
-        btn_set_color_for_swipe_back_page = (Button) findViewById(R.id.btn_set_color_for_swipe_back_page);
+        btn_set_color_for_slideBack_page = (Button) findViewById(R.id.btn_set_color_for_slideBack_page);
         mSbChangeAlpha = (SeekBar) findViewById(R.id.sb_change_alpha);
         mTvStatusAlpha = (TextView) findViewById(R.id.tv_status_alpha);
-        setSupportActionBar(mToolbar);
 
+        setSupportActionBar(mToolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.setDrawerListener(toggle);
         toggle.syncState();
@@ -95,7 +95,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        btn_set_color_for_swipe_back_page.setOnClickListener(new View.OnClickListener() {
+        btn_set_color_for_slideBack_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SwipeBackActivity.class);

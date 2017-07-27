@@ -18,9 +18,11 @@ import java.util.Random;
  */
 
 public class SwipeBackActivity extends BaseActivity {
-    private Button mBtnChangeColor;
-    private int mColor = Color.GRAY;
+    /*声明控件*/
     private Toolbar mToolbar;
+    private Button mBtnChangeColor;
+    /*声明颜色*/
+    private int mColor = Color.GRAY;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class SwipeBackActivity extends BaseActivity {
         // 设置右滑动返回
         Slidr.attach(this);
         setContentView(R.layout.swipe_back_activity);
+        // 初始化控件
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mBtnChangeColor = (Button) findViewById(R.id.btn_change_color);
 
@@ -36,6 +39,7 @@ public class SwipeBackActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         mToolbar.setBackgroundColor(mColor);
+        // 随机改变颜色
         mBtnChangeColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
